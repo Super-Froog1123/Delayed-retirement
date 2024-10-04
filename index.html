@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="" />
+        <title>Document</title>
+
+        <link rel="stylesheet" href="./css/body.css">
+        <link rel="stylesheet" href="./css/header.css">
+        <link rel="stylesheet" href="./css/aside.css">
+        <link rel="stylesheet" href="./css/main.css">
+        <link rel="stylesheet" href="./css/aside.css">
+        <link rel="stylesheet" href="./css/footer.css">
+        <link rel="stylesheet" href="./css/section.css">
+        <link rel="stylesheet" href="./css/figcaption.css">
+        <link rel="stylesheet" href="./css/figure.css">
+
+
+        <script type="text/javascript" src="./js/aside.js"></script>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/index.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/style.css">
+
+    </head>
+    <body>
+        <header>
+            <img src="./img/bk_out.png" alt="title">
+
+            <h1 class="title title_font1">
+                Ageing China: Retirement Policy Amid Demographic Shift
+            </h1>
+
+            <h2 class="date date_font1">
+                October 4th, 2024
+            </h2>
+
+        </header>
+
+        
+        <aside>
+            <nav>
+                <div id="mySidepanel" class="sidepanel">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+                    <ul style="margin-top: 120px;">
+                        <li>
+                            <a href="#md1">Retirement Policy</a>
+                        </li>
+
+                        <li>
+                            <a href="#md2">An Ageing Society</a>
+                        </li>
+
+                        <li>
+                            <a href="#md3">Voices of Rebuttal</a>
+                        </li>
+
+                        <li>
+                            <a href="#md4">Lessons from International Experiences</a>
+                        </li>
+                    </ul>
+
+                </div>
+                  
+                <button class="openbtn" onclick="openNav()">&#9776;</button>
+
+                <button class="upbtn" onclick="topFunction()" id="myBtn" title="Go to top"><img src="img/to_top_button.png" alt="Image" class="img-responsive animate-box"></button>
+            </nav>
+        </aside>
+
+
+        <main>
+
+            <section class="section1" id="md1">
+                <p>
+                    China raised the retirement age by up to 3 years for the first time since the 1950s, in response to its expanding ageing population and tighter pension budget.
+                </p>
+
+                <p>
+                    On Sep 13, the Chinese top legislative body approved the plan that will gradually raise the country's statutory retirement age in the upcoming 15 years where men’s retirement age rises from 60 to 63. Meanwhile, women in blue-collar jobs and white-collar jobs will see an increase from 50 to 53 and 55 to 58 separately.
+                </p>
+
+            </section>
+
+            <article>
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Retirement Age Calculator</title>
+                    <style>
+
+                        .form-group {
+                            margin-bottom: 15px;
+                        }
+                        label {
+                            display: block;
+                            margin-bottom: 5px;
+                        }
+                        input, select {
+                            padding: 8px;
+                            width: 100%;
+                            max-width: 300px;
+                        }
+                        .result {
+                            margin-top: 20px;
+                        }
+                    </style>
+                    <!-- 引入 flatpickr 和 monthSelectPlugin -->
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+                    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/index.js"></script>
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/style.css">
+                </head>
+                <body>
+
+                    <div style="margin: 50px auto; padding: 20px; display: block; width: 45%; height: auto;  text-align: center; font-size: 20px;  border-radius: 10px; border: 15px solid rgb(121, 32, 32); background-image: url(./img/bk.png)">
+
+
+                        <h1>Retirement Age Calculator</h1>
+
+                        <!-- 用户输入的出生年月 -->
+                        <div class="form-group">
+                            <label for="birthdate">Select your date of birth:</label>
+                            <input type="text" id="birthdate" placeholder="Select Month-Year">
+                        </div>
+                        
+                        <!-- 三种职工类别选项 -->
+                        <div class="form-group">
+                            <label for="employeeCategory">Select your employee category:</label>
+                            <select id="employeeCategory">
+                                <option value="Male Employee">Male Employee</option>
+                                <option value="Female Emplyee (55 retirement)">Female Emplyee (55 retirement)</option>
+                                <option value="Female Emplyee (50 retirement)">Female Emplyee (50 retirement)</option>
+                            </select>
+                        </div>
+    
+                        <button onclick="calculateRetirement()">Calculate Retirement Age</button>
+    
+                        <div class="result" id="result" style=" height: 30%; border-radius: 5px; background-image: url(./img/bk2.png);">
+                            <!-- 计算结果将显示在这里 -->
+                        </div>
+                    </div>
+
+                    <script>
+                        // 初始化 flatpickr，设置为月-年格式，隐藏具体日期
+                        flatpickr("#birthdate", {
+                            plugins: [
+                                new monthSelectPlugin({
+                                    shorthand: true, // 使用简写格式（Jan, Feb...）
+                                    dateFormat: "Y-m", // 保存的格式为年-月
+                                    altFormat: "F Y", // 显示的格式为月-年（January 2024）
+                                    theme: "light" // 使用 light 主题
+                                })
+                            ]
+                        });
+
+                        let retirementData = [];
+
+                        // 加载 JSON 文件
+                        window.onload = function() {
+                            fetch('c.json') // JSON 文件与 HTML 文件在同一目录下
+                                .then(response => response.json())
+                                .then(data => {
+                                    retirementData = data;
+                                    console.log(retirementData); // 查看 JSON 数据
+                                });
+                        };
+
+                        // 计算退休年龄
+                        function calculateRetirement() {
+                            const birthdate = document.getElementById('birthdate').value;
+                            const category = document.getElementById('employeeCategory').value;
+                            const resultDiv = document.getElementById('result');
+
+                            // 判断是否选择了出生年月
+                            if (!birthdate) {
+                                resultDiv.innerHTML = '<p>Please select your date of birth.</p>';
+                                return;
+                            }
+
+                            const [year, month] = birthdate.split("-");
+                            const birthYear = parseInt(year);
+                            const birthMonth = month.padStart(2, '0');  // 确保月份始终是两位数
+                            const formattedDate = `${String(birthYear)}-${String(birthMonth).padStart(2, '0')}`;
+
+                            // 男职工逻辑处理
+                            if (category === "Male Employee" && birthYear < 1965) {
+                                const retirementAge = 60;
+                                const retirementYear = birthYear + retirementAge;
+                                resultDiv.innerHTML = `
+                                    <p>The statutory retirement age remains ${retirementAge} years.</p>
+                                    <p>Reformed retirement date: ${retirementYear}-${birthMonth}</p>
+                                    <p>Delay in months: 0 months</p>
+                                `;
+                            } else if (category === "Male Employee" && (birthYear > 1976 || (birthYear === 1976 && birthMonth > 12))) {
+                                const retirementAge = 63;
+                                const retirementYear = birthYear + retirementAge;
+                                resultDiv.innerHTML = `
+                                    <p>The statutory retirement age changes to ${retirementAge} years.</p>
+                                    <p>Reformed retirement date: ${retirementYear}-${birthMonth}</p>
+                                    <p>Delay in months: 36 months</p>
+                                `;
+                            } 
+                            // 原法定退休年龄55周岁的女职工逻辑处理
+                            else if (category === "Female Emplyee (55 retirement)" && birthYear < 1970) {
+                                const retirementAge = 55;
+                                const retirementYear = birthYear + retirementAge;
+                                resultDiv.innerHTML = `
+                                    <p>The statutory retirement age remains ${retirementAge} years.</p>
+                                    <p>Reformed retirement date: ${retirementYear}-${birthMonth}</p>
+                                    <p>Delay in months: 0 months</p>
+                                `;
+                            } else if (category === "Female Emplyee (55 retirement)" && (birthYear > 1981 || (birthYear === 1981 && birthMonth > 12))) {
+                                const retirementAge = 58;
+                                const retirementYear = birthYear + retirementAge;
+                                resultDiv.innerHTML = `
+                                    <p>The statutory retirement age changes to ${retirementAge} years.</p>
+                                    <p>Reformed retirement date: ${retirementYear}-${birthMonth}</p>
+                                    <p>Delay in months: 36 months</p>
+                                `;
+                            }
+                            // 原法定退休年龄50周岁的女职工逻辑处理
+                            else if (category === "Female Emplyee (50 retirement)" && birthYear < 1975) {
+                                const retirementAge = 50;
+                                const retirementYear = birthYear + retirementAge;
+                                resultDiv.innerHTML = `
+                                    <p>The statutory retirement age remains ${retirementAge} years.</p>
+                                    <p>Reformed retirement date: ${retirementYear}-${birthMonth}</p>
+                                    <p>Delay in months: 0 months</p>
+                                `;
+                            } else if (category === "Female Emplyee (50 retirement)" && (birthYear > 1984 || (birthYear === 1984 && birthMonth > 12))) {
+                                const retirementAge = 55;
+                                const retirementYear = birthYear + retirementAge;
+                                resultDiv.innerHTML = `
+                                    <p>The statutory retirement age changes to ${retirementAge} years.</p>
+                                    <p>Reformed retirement date: ${retirementYear}-${birthMonth}</p>
+                                    <p>Delay in months: 60 months</p>
+                                `;
+                            } 
+
+
+                            // 其他情况下查找退休数据
+                            else {
+                                const record = retirementData.find(item => {
+                                    return item["Date of birth"] === birthdate && item["Employee Category"] === category;
+                                });
+
+                                // 显示结果或错误信息
+                                if (record) {
+                                    const reformRetirementYear = record["Retirement time after reform"].split('-')[0];  
+                                    const reformRetirementMonth = record["Retirement time after reform"].split('-')[1];
+
+                                    resultDiv.innerHTML = `
+                                        <p>The statutory retirement age changes to ${record["Legal retirement age after reform"]}.</p>
+                                        <p>Reformed retirement date: ${reformRetirementYear}-${reformRetirementMonth}</p>
+                                        <p>Delay in months: ${record["Delayed months"]} months</p>
+                                    `;
+                                } else {
+                                    resultDiv.innerHTML = '<p>No matching data found for the selected date of birth and employee category.</p>';
+                                }
+                            }
+
+                        }
+                    </script>
+
+                </body>
+                </html>
+
+            </article>
+
+            <section>
+
+                <p>
+                    The change will set in from 1 January 2025, with the respective retirement ages raised every few months over the next 15 years. Specifically, men’s retirement age will be gradually delayed 1 month for working every 4 months, with blue-collar women being delayed by 1 months for working 4 months, and white-collar women being delayed by 1 for working every 2 months.
+                </p>
+            </section>
+
+
+            <section>
+                <div style="position: relative; width: 100%; height: 80%; padding-top: 250.0000%;
+                padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+                border-radius: 8px; will-change: transform;">
+                    <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+                    src="https://www.canva.com/design/DAGSNsEfCys/JZc8HIpwWKj80w4Q-ZCdLg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+                    </iframe>
+                </div>
+            </section>
+
+            <section class="section1">
+
+                <p>
+                    For special retirement arrangements, the government offered a flexible early retirement policy for employees who met the minimum pension requirement of 15 years.
+                </p>
+
+                <p>
+                    Under this policy, employees may now have the option to choose early retirement without postponing their retirement age while ensuring that they can leave the workforce on their terms. 
+                </p>
+
+                <p>
+                    Employees were allowed to retire up to three years earlier than the new statutory retirement age. This provides them with greater flexibility for their retirement planning. However, the retirement age should not be lower than the original statutory retirement age, which was 60 years old for men, 50 years old for women in blue-collar jobs, and 55 years old for women in white-collar jobs.
+                </p>
+            </section>
+
+            <section>
+                <div style="position: relative; width: 100%; height: 0; padding-top: 250.0000%;
+                padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+                border-radius: 8px; will-change: transform;">
+                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+                    src="https://www.canva.com/design/DAGSlsv8pFM/kEASM4dsLD_cqMgV61BXEA/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+                </iframe>
+                </div>
+            </section>
+
+            <section class="section1">
+                For the pension arrangement, the government announced plans to extend the minimum pension contribution period. Starting from 2030, employees will be required to contribute to their pensions for a total of 20 years, starting from the current 15 years. This extension is part of the government's broader strategy to strengthen the pension system amid the challenges posed by an ageing population.
+            </section>
+
+            <section style="text-align: left;" id="md2">
+                <h2>
+                    An Ageing Society
+                </h2>
+            </section>
+
+
+            <section>
+                <div class="flourish-embed flourish-chart" data-src="visualisation/19650806"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/19650806/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
+            </section>
+
+
+            <section>
+
+                <p>
+                    The ageing  population has become a significant global concern, as the population over 65 has been increasing over the years, according to the World bank Open Data. Specifically, this is costing certain regions facing more pronounced demographic changes.
+                </p>
+            </section>
+
+            <section>
+                <div class="flourish-embed flourish-chart" data-src="visualisation/19643280"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/19643280/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
+            </section>
+
+            <section>
+
+                <p>
+                    When we take a closer look in China, it entered a new demographic era when it stepped into 2024. The ageing problem among the population presents a profound challenge for the future of the nation. 
+                </p>
+
+            </section>
+
+
+            <section>
+
+                <p>
+                    The elderly citizens population stood at approximately 13.9 million in 2014, according to the data provided by Population Census by the Public of Republic China. . By 2023, the figure had climbed to 21.7 million.  The expanding elderly population comes with a growing need for robust policies in healthcare, social services, pension systems, retirement treatments and other policies, in order to support this ageing demographic. 
+                </p>
+
+            </section>
+
+            <section>
+                <p>
+                    Looking ahead for the years 2024 to 2028, we had made a projection of the population aged 65 or above, with an algorithm of calculating the trend by adding up the birth rate of each year 65 years ago while minus the death rate each year. The prediction is also followed by the increasing trend of each year’s ageing population.
+                </p>
+            </section>
+
+            <section>
+                <p>
+                    The projections indicated a continued sharp increase. The senior population is expected to reach 27 million by 2028 which is approximately 94.2% higher than 2014. The trend is shows that the Chinese ageing  population is growing at an accelerating rate. This will become a significant impact for the development of the country’s economy, labour force and social welfare structure, not even mentioning the burden on younger generations increases.
+                </p>
+            </section>
+
+            <section>
+                <div class="flourish-embed flourish-chart" data-src="visualisation/19626303"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/19626303/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
+            </section>
+
+            <section>
+
+                <p>
+                    Life expectancy is the number of years a person can expect to live based on current mortality rates. When looking into the realm of life expectancy trends in Asia from 2001 to 2022 published in 
+                    
+                    <a href="https://ourworldindata.org/life-expectancy">our world in data</a>
+
+                    , it became evident that China stood out with a relatively high life expectancy, reflecting an overall upward trajectory. This trend not only signifies longer lives but also translates to an extended period of working years for individuals.
+                </p>
+            </section>
+
+
+            <section>
+
+                <p>
+                    With the surge in life expectancy, the existing retirement policies may need reevaluation. If the retirement policy remains unchanged, retirees could find themselves out of the workforce for over 15 years. This is a time span during which the labour market is actively seeking seasoned professionals who still possess the vigour and expertise to contribute effectively.
+                </p>
+
+            </section>
+
+
+            <section>
+
+                <div class="flourish-embed flourish-chart" data-src="visualisation/19626973"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/19626973/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
+                
+            </section>
+
+
+
+            <section>
+
+                <p>
+                    According to the 
+                    
+                    <a href="https://www.stats.gov.cn/sj/tjgb/rkpcgb/qgrkpcgb/202302/t20230206_1902005.html#:~:text=%E5%85%A8%E5%9B%BD%E4%BA%BA%E5%8F%A3%E4%B8%AD%EF%BC%8C0%E2%80%9414%E5%B2%81%E4%BA%BA%E5%8F%A3%E4%B8%BA253383938%E4%BA%BA%EF%BC%8C%E5%8D%A017.95%25%EF%BC%9B15%E2%80%9459%E5%B2%81%E4%BA%BA%E5%8F%A3%E4%B8%BA894376020%E4%BA%BA%EF%BC%8C%E5%8D%A063.35%25%EF%BC%9B60%E5%B2%81%E5%8F%8A%E4%BB%A5%E4%B8%8A%E4%BA%BA%E5%8F%A3%E4%B8%BA264018766%E4%BA%BA%EF%BC%8C%E5%8D%A0,18.70%25%EF%BC%8C%E5%85%B6%E4%B8%AD65%E5%B2%81%E5%8F%8A%E4%BB%A5%E4%B8%8A%E4%BA%BA%E5%8F%A3%E4%B8%BA190635280%E4%BA%BA%EF%BC%8C%E5%8D%A013.50%25%E3%80%82">
+                        National Bureau of Statistics
+                    </a>
+                    
+                    
+                    , the working-age population is decreasing while the degree of ageing is further deepening. By the end of 2023, there were 875.56 million workers aged 16-59 which is 61.3% of the total population. There is a decrease of 10.75 million compared to 2022. While the age structure of the population remains generally stable, the ageing trend and the decrease in the labour force may gradually lead to a labour shortage dilemma.
+                </p>
+            </section>
+
+
+
+            <section style="text-align: left;" id="md3">
+                <h2>
+                    Voices of Rebuttal
+                </h2>
+            </section>
+
+            <section>
+                <P>
+                    However, the plan received a large amount of opposition among Weibo. The employment issues faced by individuals over the age of 60 are also significant concerns for the public.
+                </P>
+            </section>
+            
+
+            <section>
+                <P>
+                    Citizens are questioning whether private companies will continue to employ workers beyond the age of 60. At the same time, the delayed retirement policy requires individuals to postpone receiving their pensions, forcing employees to contribute to their pensions without any income. This situation led the public to question whether there are sufficient employment opportunities for citizens in society.
+                </P>
+            </section>
+
+
+            <section>
+                <P>
+                    Furthermore, the delayed retirement policy created uncertainty for younger individuals regarding their job prospects. There are increasing concerns that this new policy may not only prevent older workers from retiring but also leave younger individuals struggling to secure employment.
+                </P>
+            </section>
+            
+            <section>
+                <div style="position: relative; width: 100%; height: 0; padding-top: 250.0000%;
+                padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+                border-radius: 8px; will-change: transform;">
+                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+                    src="https://www.canva.com/design/DAGSlqIePkI/bJrByTHkuHEOca8Bm5LBtQ/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+                </iframe>
+                </div>
+            </section>
+
+            <section>
+                <p>
+                    According to a Weibo user (小阿ALICE), these frustrations may arise from the limited job opportunities available to younger individuals, who may perceive older workers with outdated ideas and skills  as occupying positions that could otherwise be filled by them.  Over time, this could cultivate a societal sentiment of "ageism" or resentment toward the elderly.
+                </p>
+            </section>
+
+            <section>
+                <p>
+                    <a href="https://chinadigitaltimes.net/chinese/711441.html">
+                        The commentary article
+                    </a>
+                     that was written by Cao Lin for the “China Youth Daily” in 2013 was widely shared on Weibo. The article stated that raising the retirement age would be a “breach of trust” for a generation.The article also stated thatpolicies should uphold a certain degree of stability, particularly when they impact the interests of citizens. 
+                </p>
+            </section>
+
+
+
+            <section style="text-align: left;" id="md4">
+                <h2>
+                    Lessons from International Experiences
+                </h2>
+            </section>
+
+
+            <section>
+                <div style="position: relative; width: 100%; height: 0; padding-top: 75.0000%;
+                padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+                border-radius: 8px; will-change: transform;">
+                    <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+                        src="https://www.canva.com/design/DAGSaV2wRlE/ZXnKUej26j7Aj2osQG9gFA/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+                    </iframe>
+                </div>
+            </section>
+
+            <section>
+                <p>
+                    <a href="https://travail-emploi.gouv.fr/la-reforme-des-retraites-de-2023">
+                        According to the 2023 French Ministry of Labor and Employment Reform Report
+                    </a>
+                    , France is raising the retirement age from 62 to 64 and requiring 43 years of work for a full pension to address pension shortfalls and an ageing population. While this reform aims to ease pressure on the social security system, it has sparked widespread protests from citizens worried about losing benefits.
+                </p>
+            </section>
+
+            <section>
+                <p>
+                    Japan, facing a rapidly ageing population, has implemented delayed retirement policies since the 1980s, raising the retirement age from 60 to 65 to address labour shortages.
+                    
+                    <a href="https://www.mhlw.go.jp/stf/nenkin_shikumi_04.html#:~:text=%E6%88%91%E3%81%8C%E5%9B%BD%E3%81%AE%E5%85%AC%E7%9A%84%E5%B9%B4%E9%87%91%E5%88%B6%E5%BA%A6%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AF%E3%80%81%E6%98%AD%E5%92%8C17,%281942%29%E5%B9%B4%E3%81%AB%E5%8A%B4%E5%83%8D%E8%80%85%E5%B9%B4%E9%87%91%E4%BF%9D%E9%99%BA%E5%88%B6%E5%BA%A6%E3%81%8C%E5%89%B5%E8%A8%AD%E3%81%95%E3%82%8C%E3%81%A6%E4%BB%A5%E6%9D%A5%E3%80%81%E7%B5%82%E6%88%A6%E3%80%81%E6%88%A6%E5%BE%8C%E3%81%AE%E6%B7%B7%E4%B9%B1%E3%81%A8%E7%B5%8C%E6%B8%88%E5%BE%A9%E8%88%88%E3%80%81%E9%AB%98%E5%BA%A6%E7%B5%8C%E6%B8%88%E6%88%90%E9%95%B7%E3%80%81%E3%81%9D%E3%81%AE%E5%BE%8C%E3%81%AE%E4%BD%8E%E6%88%90%E9%95%B7%E6%99%82%E4%BB%A3%E3%80%81%E3%81%9D%E3%81%97%E3%81%A6%E9%AB%98%E9%BD%A2%E5%8C%96%E3%81%AE%E9%80%B2%E5%B1%95%E3%81%AA%E3%81%A9%E3%81%AE%E4%B8%AD%E3%81%A7%E3%80%81%E6%A7%98%E3%80%85%E3%81%AA%E6%94%B9%E6%AD%A3%E3%82%92%E8%A1%8C%E3%81%A3%E3%81%A6%E3%81%8D%E3%81%9F%E3%80%82">
+                        According to the Japanese Ministry of Health
+                    </a>
+                    
+                    , Labor and Welfare's Japanese pension record history, In the 2000s, a "re-employment" policy offered flexible work for those over 60. By the 2020s, Japan proposed extending retirement to 70. Despite these efforts, concerns remain about the health and work pressures on elderly workers.
+
+                </p>
+            </section>
+
+            <section>
+                <p>
+                    <a href="http://theory.people.com.cn/n1/2016/0712/c40531-28547924.html">
+                        A commentary from the Communist Party of China News 
+                    </a>
+                    suggests that China may adopt a gradual approach to adjusting retirement policies, inspired by international experiences. Strategies could include flexible retirement options, varying retirement ages based on occupation and health, and enhancing social security. Additionally, vocational training for older workers may help extend their participation in the workforce. Observing countries like France and Japan, China may also prioritise addressing public concerns for a smooth policy transition.
+                </p>
+            </section>
+
+        <footer style=" margin-top: 100px; text-align: center;">
+            <p><small>&copy; Hu Xinyue, Huang Weihao, Xu Zhishan, Lai Yangke, Li Yijun</small></p>
+        </footer>
+    </body>
+</html>
